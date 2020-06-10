@@ -1,5 +1,20 @@
 {{define "content"}}
 
-i am content
+<i-button>Default</i-button>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false,
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            }
+        }
+    })
+  </script>
+
 
 {{end}}

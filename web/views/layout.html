@@ -2,16 +2,27 @@
 
 <!DOCTYPE html>
 <html>
-    <header>
-        <title>home</title>
-        <script src="/static/js/test.js"></script>
-    </header>
-    <body>
-        {{block "content" .}}
-            <h1> hello world</h1>
-        {{end}}
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>MY BLOG</title>
+    <link rel="stylesheet" type="text/css" href="/static/js/iview.css">
+    <script type="text/javascript" src="/static/js/vue.min.js"></script>
+    <script type="text/javascript" src="/static/js/iview.min.js"></script>
+</head>
+<body>
+<div id="app">
+    {{block "content" .}}
+        <div id="content">
+            <style type="text/css">
+                p{color: red}
+            </style>
+            <p>hello</p>
+        </div>
+    {{end}}
+</div>
+</body>
 </html>
 
 {{end}}
+
     
