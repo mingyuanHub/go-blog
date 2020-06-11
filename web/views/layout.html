@@ -8,18 +8,34 @@
     <link rel="stylesheet" type="text/css" href="/static/js/iview.css">
     <script type="text/javascript" src="/static/js/vue.min.js"></script>
     <script type="text/javascript" src="/static/js/iview.min.js"></script>
+    <script type="text/javascript" src="/static/js/axios.min.js"></script>
 </head>
 <body>
-<div id="app">
-    {{block "content" .}}
-        <div id="content">
-            <style type="text/css">
-                p{color: red}
-            </style>
-            <p>hello</p>
-        </div>
-    {{end}}
-</div>
+    <div id="app">
+        {{block "content" .}}
+            <div id="content">
+                <style type="text/css">
+                    p{color: red}
+                </style>
+                <p>hello</p>
+            </div>
+        {{end}}
+    </div>
+
+    <script>
+        const data = {
+        }
+
+        const methods = {
+            init(){
+            }
+        }
+
+        Object.assign(config.data, data);
+        Object.assign(config.methods, methods);
+        config.delimiters = ['${', '}']
+        new Vue(config)
+    </script>
 </body>
 </html>
 

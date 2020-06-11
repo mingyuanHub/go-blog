@@ -1,19 +1,36 @@
 {{define "content"}}
 
-<i-button>Default</i-button>
+<span v-show="visible">hello</span>
+
+${blogList}
+<li v-for="item in blogList">${item.Title}</li>
+
+<i-button @click="show">Default</i-button>
 
 <script>
-    new Vue({
+    let config = {
         el: '#app',
         data: {
             visible: false,
+            blogList:[]
         },
         methods: {
             show: function () {
-                this.visible = true;
+                this.visible = !this.visible;
+            },
+            getBlogList() {
+                axios.get('/list').then((res) => {
+                    if (res.data.code == 200) {
+                        this.blogList = res.data.data.List
+                    }
+                })
             }
+        },
+        mounted() {
+            this.init()
+            this.getBlogList()
         }
-    })
+    }
   </script>
 
 
