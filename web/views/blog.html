@@ -1,0 +1,31 @@
+{{define "content"}}
+
+<a href="/home"> 首页 </a>
+${blog}
+
+<script>
+    let config = {
+        el: '#app',
+        data: {
+            blog: {},
+        },
+        methods: {
+            getBlog() {
+                axios.get('/detail/{{ . }}').then((res) => {
+                    if (res.data.code == 200) {
+                        this.blog = res.data.data.Blog
+                    }
+                })
+            }
+        },
+        mounted() {
+        },
+        created() {
+            this.init()
+            this.getBlog()
+        }
+    }
+  </script>
+
+
+{{end}}

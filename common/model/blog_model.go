@@ -3,7 +3,7 @@ package model
 import (
 	"go-blog/config"
 	"go-blog/common/core"
-	// "fmt"
+	"fmt"
 
 )
 
@@ -15,8 +15,10 @@ type Blog struct {
 	UpdateTime 	string
 }
 
+var column = "id, title, content, create_time, update_time"
+
 func ListBlog() (list []Blog) {
-	rows, err := config.Db().Query("select id, title, content, create_time, update_time from blog")
+	rows, err := config.Db().Query("select " + column + " from blog")
 
 	if err != nil {
 		panic(err)
@@ -32,5 +34,14 @@ func ListBlog() (list []Blog) {
 	}
 
 	return
+}
+
+func GetBlog(id int) (blog Blog) {
+	blog = Blog{}
+	err := config.Db().QueryRow("select " + column + " from blog where id = ?", id).Scan(&blog.Id, &blog.Title, &blog.Content, &blog.CreateTime, &blog.UpdateTime)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return 
 }
 

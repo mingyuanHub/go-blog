@@ -3,7 +3,12 @@
 <span v-show="visible">hello</span>
 
 ${blogList}
-<li v-for="item in blogList">${item.Title}</li>
+<ul>
+    <a v-for="item in blogList" :href="'/blog/' + item.Id">
+        <li>${item.Title}</li>
+    </a>
+</ul>
+
 
 <i-button @click="show">Default</i-button>
 
@@ -27,6 +32,8 @@ ${blogList}
             }
         },
         mounted() {
+        },
+        created() {
             this.init()
             this.getBlogList()
         }

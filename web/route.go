@@ -6,8 +6,9 @@ import (
 )
 
 func BindRoute(mux *http.ServeMux) {
+	mux.HandleFunc("/Index", ctr.Index)
 	mux.HandleFunc("/home", ctr.Home)
 	mux.HandleFunc("/list", ctr.GetBlogList)
-
-	mux.HandleFunc("/test", ctr.Test)
+	mux.HandleFunc("/blog/", ctr.Blog)
+	mux.HandleFunc("/detail/", ctr.GetBlog)
 }

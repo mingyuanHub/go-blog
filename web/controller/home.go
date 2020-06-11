@@ -5,13 +5,17 @@ import (
 	"html/template"
 	"go-blog/common/model"
 	"go-blog/common/core"
-	"fmt"
+	// "fmt"
 )
+
+func Index(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("views/layout.html")
+	t.ExecuteTemplate(w, "layout", nil)
+}
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("views/layout.html", "views/home.html")
-	list := model.ListBlog()
-	t.ExecuteTemplate(w, "layout", list)
+	t.ExecuteTemplate(w, "layout", nil)
 }
 
 func GetBlogList(w http.ResponseWriter, r *http.Request) {
@@ -24,15 +28,6 @@ func GetBlogList(w http.ResponseWriter, r *http.Request) {
 }
 
 
-
-
-
-func Test(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(222)
-	t, _ := template.ParseFiles("views/layout.html")
-	t.ExecuteTemplate(w, "layout", nil)
-
-}
 
 
 
